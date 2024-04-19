@@ -40,10 +40,20 @@ a {
 }
 
 .g-tooltip {
-    font-size: 1rem;
+    font-size: 0.75rem;
     padding: 5px;
     border-radius: 5px;
+    width: 350px;
+    // word-break: break-word;
+    white-space: normal;
+    overflow-wrap: break-word;
 }
+
+.g-tooltip a {
+    word-break: break-all;
+    display: inline-block;
+}
+
 
 // -------------------------------------- page / section styling
 #p-main {
