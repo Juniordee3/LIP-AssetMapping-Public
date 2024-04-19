@@ -32,9 +32,11 @@ a:hover {
 }
 
 .g-tooltip {
-  font-size: 1rem;
+  font-size: 0.75rem;
   padding: 5px;
   border-radius: 5px;
+  max-width: 400px;
+  text-wrap: wrap;
 }
 
 #p-main {
