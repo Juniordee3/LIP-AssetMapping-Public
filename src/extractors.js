@@ -71,3 +71,20 @@ export function extractDayProgramData(json) {
         };
     });
 }
+
+export function extractDcsOfficesData(json) {
+    return json.map(data => {
+        return {
+            name: data.name,
+            address: data.civic_addr,
+            city: data.city,
+            postalCode: data.postal_cod,
+            phone: data.phone,
+            fax: data.fax,
+            website: data.website.url,
+            hours: data.hours,
+            latitude: data.location.coordinates[1],
+            longitude: data.location.coordinates[0]
+        };
+    });
+}
