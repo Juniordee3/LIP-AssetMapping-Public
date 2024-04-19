@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Public Services in Nova Scotia</title>
+		<link rel="stylesheet" href="./bundle.css" />
+        <script defer src="bundle.js"></script>
+    </head>
+    <body class="g-base">
+
+        <main id="p-main">
+            <aside id="s-aside">
+                <header class="title">Public Services of Nova Scotia, Canada</header>            
+                <div class="caption">
+                    <p>
+                        This is a test of using Leaflet instead of Google Maps, and using Datasets maintained by the NS Government. 
+                    </p>
+                    <p>
+                        <img src="marker-icon.png" alt="Map Marker">Roll over the markers on the map to view the name and additional information about the location.
+                    </p>
+                    <p>
+                        Attributions:<br>
+                        <a href="Contains information licensed under the Open Government Licence – Nova Scotia" target="_blank">Nova Scotia Public Datasets</a><br>
+                    </p>
+                    <select id="slctCategory">
+                        <option value="" selected>Choose Category</option>
+                        <option value="hospitals">Hospitals</option>
+                        <option value="driving_schools">Driving Schools</option>
+                        <option value="boys_and_girls_club">Boys and Girls Club</option>
+                        <option value="child_care_facilities">Child Care / Day Care</option>
+                        <option value="day_programs">Day Programs</option>
+                    </select>
+                </div>
+            </aside>
+            <div id="s-content">
+                <div id="map"></div>
+            </div>
+        </main>             
+    </body>
+</html>
