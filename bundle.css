@@ -35,8 +35,14 @@ a:hover {
   font-size: 0.75rem;
   padding: 5px;
   border-radius: 5px;
-  max-width: 400px;
-  text-wrap: wrap;
+  width: 350px;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+.g-tooltip a {
+  word-break: break-all;
+  display: inline-block;
 }
 
 #p-main {
