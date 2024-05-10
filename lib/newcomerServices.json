@@ -1,0 +1,156 @@
+[
+    {
+        "service": "",
+        "location": "",
+        "address": "",
+        "latitude": "",
+        "longitude": "",
+        "phone": "",
+        "email": "",
+        "website": "",
+        "description": ""
+    },
+    {
+        "service": "",
+        "location": "",
+        "address": "",
+        "latitude": "",
+        "longitude": "",
+        "phone": "",
+        "email": "",
+        "website": "",
+        "description": ""
+    },
+    {
+        "service": "Stellarton Public Library",
+        "location": "Stellarton (Pictou County)",
+        "address": "248 Foord Street Stellarton, NS B0K 1S0",
+        "latitude": "45.55947",
+        "longitude": "-62.66016",
+        "phone": "902 755-1638",
+        "email": "stellarton@parl.ns.ca",
+        "website": "https://www.parl.ns.ca/locations/stellarton.php",
+        "description": "All library programs are offered free of charge."
+    },
+    {
+        "service": "Trenton Public Library",
+        "location": "Trenton (Pictou County)",
+        "address": "1 Forge Street Trenton, NS B0K 1X0",
+        "latitude": "45.61076",
+        "longitude": "-62.63889",
+        "phone": "-62.63889",
+        "email": "trenton@parl.ns.ca",
+        "website": "https://www.parl.ns.ca/locations/trenton.php",
+        "description": "All library programs are offered free of charge."
+    },
+    {
+        "service": "Westville Public Library",
+        "location": "Westville (Pictou County)",
+        "address": "2042 Queen Street Unit #3, RR 3 Westville, NS B0K 2A0",
+        "latitude": "45.55378574",
+        "longitude": "-62.71311143",
+        "phone": "902 396-5022",
+        "email": "westville@parl.ns.ca",
+        "website": "https://www.parl.ns.ca/locations/westville.php",
+        "description": "All library programs are offered free of charge."
+    },
+    {
+        "service": "YMCA Centre for Immigrant Programs Pictou County",
+        "location": "New Glasgow (Pictou County)",
+        "address": "352 East River Road, New Glasgow, NS B2H 3P7",
+        "latitude": "45.58349248",
+        "longitude": "-62.64492727",
+        "phone": "902-752-1573",
+        "email": "yispictou.county@halifax.ymca.ca",
+        "website": "https://www.yishfx.ca/ymca-yis-pictou",
+        "description": "The YMCA Center for Immigrant Program provides place-based settlement and language support to immigrants, refugees, and their families who are new to the community."
+    },
+    {
+        "service": "YMCA of Pictou County",
+        "location": "New Glasgow (Pictou County)",
+        "address": "2756 Westville Road New Glasgow, NS B2H 5C6",
+        "latitude": "45.57692319",
+        "longitude": "-62.67617259",
+        "phone": "902-752-0202",
+        "email": "pic-front.desk@pcymca.ca",
+        "website": "https://pcymca.ca/",
+        "description": "The YMCA of Pictou County provides services such as health, fitness, recreation, child care, youth development and outreach programming."
+    },
+    {
+        "service": "YREACH Child & Youth Settlement Worker",
+        "location": "New Glasgow (Pictou County)",
+        "address": "352 East River Road, New Glasgow, NS B2H 3P7",
+        "latitude": "45.58355256",
+        "longitude": "-62.64501309",
+        "phone": "902-579-6539",
+        "email": "zahra.yazidi@halifax.ymca.ca",
+        "website": "https://www.yishfx.ca/ymca-yis-pictou",
+        "description": "Provides community settlement service to immigrants and newcomers to the New Glasgow (Pictou County) area. Includes referrals, school settlement, support with job search, housing and general settlement needs."
+    },
+    {
+        "service": "YREACH Language Services",
+        "location": "Antigonish County",
+        "address": "50 James Street Antigonish, NS B2G 1R7",
+        "latitude": "45.61560853",
+        "longitude": "-62.0038599",
+        "phone": "902-499-5580",
+        "email": "nianhua.liu@halifax.ymca.ca",
+        "website": "https://www.yishfx.ca/yis-language-services",
+        "description": "The YREACH Language program is for adult immigrants and refugees who need to develop the necessary language and communication skills to actively participate in Canadian society. A language assessment is needed before being placed in a class, you can register for an assessment with your local settlement staff."
+    },
+    {
+        "service": "YREACH Language Services",
+        "location": "Pictou County",
+        "address": "352 East River Road, New Glasgow, NS B2H 3P7",
+        "latitude": "45.58355256",
+        "longitude": "-62.64501309",
+        "phone": "902-752-1573",
+        "email": "yispictou.county@halifax.ymca.ca",
+        "website": "https://www.yishfx.ca/yis-language-services",
+        "description": "The YREACH Language program is for adult immigrants and refugees who need to develop the necessary language and communication skills to actively participate in Canadian society. A language assessment is needed before being placed in a class, you can register for an assessment with your local settlement staff."
+    },
+    {
+        "service": "YREACH Language Services",
+        "location": "Colchester County",
+        "address": "90 Esplanade Unit 2 Truro, B2N 2K3",
+        "latitude": "45.3463849",
+        "longitude": "-63.2939951",
+        "phone": "902-899-4573",
+        "email": "karen.kittilsen@halifax.ymca.ca",
+        "website": "https://www.yishfx.ca/yis-language-services",
+        "description": "The YREACH Language program is for adult immigrants and refugees who need to develop the necessary language and communication skills to actively participate in Canadian society. A language assessment is needed before being placed in a class, you can register for an assessment with your local settlement staff."
+    },
+    {
+        "service": "YREACH School Settlement",
+        "location": "Antigonish County",
+        "address": "50 James Street Antigonish, NS B2G 1R7",
+        "latitude": "45.61560853",
+        "longitude": "-62.0038599",
+        "phone": "902-229-3326",
+        "email": "Desmond.hembrey@halifax.ymca.ca",
+        "website": "https://www.yishfx.ca/yreach",
+        "description": "Provides settlement to immigrant/Newcomer children and youth in schools."
+    },
+    {
+        "service": "YREACH Settlement Staff",
+        "location": "New Glasgow (Pictou County)",
+        "address": "352 East River Road, New Glasgow, NS B2H 3P7",
+        "latitude": "45.58355256",
+        "longitude": "-62.64501309",
+        "phone": "902-456-3521",
+        "email": "Catalina.martinez@halifax.ymca.ca",
+        "website": "https://www.yishfx.ca/ymca-yis-pictou",
+        "description": "Provides community settlement service to immigrants and newcomers to the New Glasgow (Pictou County) area.  Includes referrals, school settlement, support with job search, housing and general settlement needs."
+    },
+    {
+        "service": "YREACH Settlement Staff",
+        "location": "Truro (Colchester County)",
+        "address": "90 Esplanade Unit 2 Truro, B2N 2K3",
+        "latitude": "45.3463849",
+        "longitude": "-63.2939951",
+        "phone": "902-899-4573",
+        "email": "karen.kittilsen@halifax.ymca.ca",
+        "website": "https://www.yishfx.ca/yreach",
+        "description": "Provides community settlement service to immigrants and newcomers to the Truro Colchester area.  Includes referrals, school settlement, support with job search, housing and general settlement needs."
+    }
+]

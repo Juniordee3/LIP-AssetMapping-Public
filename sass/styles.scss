@@ -1,10 +1,3 @@
-@font-face {
-    font-family: 'Vollkorn SC';
-    font-style: normal;
-    font-weight: 400;
-    src: url("./../lib/fonts/VollkornSC-Regular.ttf");
-}
-
 // -------------------------------------------- mixins
 @mixin apply-flex($direction:row, $main-align:flex-start, $cross-align:flex-start, $wrap:nowrap) {
     display: flex;
@@ -44,7 +37,6 @@ a {
     padding: 5px;
     border-radius: 5px;
     width: 350px;
-    // word-break: break-word;
     white-space: normal;
     overflow-wrap: break-word;
 }
@@ -59,37 +51,77 @@ a {
 #p-main {
     padding:30px;
     @include apply-flex(row, flex-start, flex-start, wrap);
+    position: relative;
+    z-index: 1;
+    justify-content: center;
 }
 
 #p-main #s-content { 
-    width: 600px;
-    flex-grow:4;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
 }
 
 #p-main #s-content #map {
-    width:100%;
+    width: 800px;
     height: 800px;
     border-radius: 5px;
-    max-width:800px;
 }
 
-#p-main #s-aside {
-    width: 200px;
+#p-main #s-content #phone-services {
+    width: 300px;
+    padding-left: 20px;
+    margin-left: 20px;
+
+    h2 {
+        margin-top: 0;
+    }
+}
+
+#p-main #aside {
+    width: 300px;
     padding-right: 20px;
-    flex-grow:1;
 }
 
-#p-main #s-aside .title {
-    font-family: "Vollkorn SC";
+#p-main #aside .title {
     font-size:1.75rem;
     margin-bottom:10px;
 }
 
-#p-main #s-aside .caption {
+#p-main #aside .caption {
     margin-bottom:10px;
 }
 
-#p-main #s-aside img {
+#p-main #aside img {
     float: left;
     padding-right:10px;
+}
+
+#newcomerServices {
+    background-color: #CAC428;
+}
+
+#healthAndWellness {
+    background-color: #2A81CB;
+}
+
+.categoryBox {
+    width: 250px;
+    padding: 15px;
+    margin: 10px;
+    color: black;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 13px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.categoryBox:hover {
+    transform: scale(1.05);
+}
+
+.selectedBox {
+    opacity: 0.7;
 }

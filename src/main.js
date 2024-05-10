@@ -6,21 +6,65 @@ import "leaflet/dist/leaflet.css";
 import L, { marker } from "leaflet";
 
 // api config
-import { API_ENDPOINTS, EXTRACTORS } from "./apiConfig";
+import { CATEGORIES } from "./apiConfig";
 
 // leaflet map and marker objects
 let map;
 let markers = [];
 
+let iconColor;
+let myIcon;
+
 /* ----------------------------- EVENT LISTENERS ---------------------------- */
-document.getElementById("slctCategory").addEventListener("change", function() {
-    const selectedEndpoint = this.value;
-    const URL = API_ENDPOINTS[selectedEndpoint];
-    const EXTRACTOR = EXTRACTORS[selectedEndpoint];
-    removeMarkers();
-    fetchAndProcessJSON(URL, EXTRACTOR, handleData, handleError);
+
+document.addEventListener("DOMContentLoaded", function() {
+    const boxes = document.querySelectorAll(".categoryBox");
+    let lastSelected = document.getElementById("newcomerServices"); // Store the last selected box
+
+    // set default category
+    const DEFAULT_CATEGORY = "NEWCOMER_SERVICES_ENDPOINTS";
+    const DEFAULT_BOX = document.querySelector(`[data-category="${DEFAULT_CATEGORY}"]`);
+
+    // highlight default category
+    if (DEFAULT_BOX) {
+        DEFAULT_BOX.classList.add("selectedBox");
+    }
+
+    // set the icon color for the default category
+    iconColor = "yellow";
+
+    // set the icon for the default category
+    myIcon = L.icon({
+        iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${iconColor}.png`,
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+
+    boxes.forEach(box => {
+        box.addEventListener("click", function(e) {
+            // If there's a last selected box, toggle its 'selected' class off
+            if (lastSelected) {
+                lastSelected.classList.remove("selectedBox");
+            }
+            
+            // Toggle the current box's 'selected' state and update lastSelected
+            this.classList.toggle("selectedBox");
+            lastSelected = this.classList.contains("selectedBox") ? this : null;
+            selectCategory(e);
+        });
+    });
+    // get the endpoints for the selected category
+    if (CATEGORIES[DEFAULT_CATEGORY]) {
+        CATEGORIES[DEFAULT_CATEGORY].forEach(service => {
+            fetchAndProcessJSON(service.url, service.extractor, handleData, handleError);
+        });
+    } else {
+        console.error("Category not found");
+    }
 });
-  
+
 
 
 /* ----------------------------- EVENT HANDLERS ----------------------------- */
@@ -40,7 +84,7 @@ function handleData(data) {
     // create markers and place on map
     data.forEach(place => {
         if (place.latitude && place.longitude) {
-            let marker = L.marker([place.latitude, place.longitude]).addTo(map);
+            let marker = L.marker([place.latitude, place.longitude], {icon: myIcon}).addTo(map);
 
             // add marker to markers array
             markers.push(marker);
@@ -88,6 +132,35 @@ function toTitleCase(str) {
     return str.toLowerCase().split(" ").map(word => {
         return (word.charAt(0).toUpperCase() + word.slice(1)).replace(/_/g, " ");
     }).join(" ");
+}
+
+// when category box is clicked
+function selectCategory(e) {
+    // remove previous markers
+    removeMarkers();
+
+    // get the selected category
+    const CATEGORY = e.target.getAttribute("data-category");
+
+    // get the icon color for the selected category
+    iconColor = e.target.getAttribute("data-color");
+    // update the icon
+    myIcon = L.icon({
+        iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${iconColor}.png`,
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+
+    // get the endpoints for the selected category
+    if (CATEGORIES[CATEGORY]) {
+        CATEGORIES[CATEGORY].forEach(service => {
+            fetchAndProcessJSON(service.url, service.extractor, handleData, handleError);
+        });
+    } else {
+        console.error("Category not found");
+    }
 }
 
 // --------------------------------------------------------- main method

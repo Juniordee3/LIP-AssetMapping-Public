@@ -22,12 +22,23 @@
                             Attributions:<br>
                             <a href="Contains information licensed under the Open Government Licence – Nova Scotia" target="_blank">Nova Scotia Public Datasets</a><br>
                         </p>
+                        <p>Dataset Selection</p>
+                        <select id="slctCategory">
+                            <option value="" selected>Choose Dataset</option>
+                            <option value="hospitals">Hospitals</option>
+                            <option value="driving_schools">Driving Schools</option>
+                            <option value="boys_and_girls_club">Boys and Girls Club</option>
+                            <option value="child_care_facilities">Child Care / Day Care</option>
+                            <option value="day_programs">Day Programs</option>
+                            <option value="dcs_offices">DCS Offices</option>
+                            <option value="newcomer_settlement_services">Newcomer Services</option>
+                        </select>
 
                         <!-- --------------------------- CATEGORY BOXES ---------------------------- -->
                         <!-- Newcomer Settlement Services -->
-                        <div class="categoryBox" id="newcomerServices" data-category="NEWCOMER_SERVICES_ENDPOINTS" data-color="yellow">Newcomer Settlement Services</div>
+                        <div class="categoryBox" id="newcomerServices" data-endpoint="newcomer_settlement_services" data-color="yellow">Newcomer Settlement Services</div>
                         <!-- Health and Wellness -->
-                        <div class="categoryBox" id="healthAndWellness" data-category="hospitals" data-color="blue">Health + Wellness</div>
+                        <div class="categoryBox" id="healthAndWellness" data-endpoint="hospitals" data-color="blue">Health + Wellness</div>
                     </div>
                 </aside>
                 <div id="map"></div>
