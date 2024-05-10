@@ -44,11 +44,13 @@ import { extractNewcomerServicesData, extractSettlementServiceProviderDirectoryD
 export const CATEGORIES = {
     NEWCOMER_SERVICES_ENDPOINTS: [
         {
+            key: "customData",
             url: "http://localhost:3000/newcomerServices.json",
             extractor: extractNewcomerServicesData,
             name: "Custom Newcomer Dataset"
         },
         {
+            key: "settlementServiceProviders",
             url: "https://data.novascotia.ca/resource/7t4h-ktpk.json",
             extractor: extractSettlementServiceProviderDirectoryData,
             name: "Settlement Service Provider Directory"

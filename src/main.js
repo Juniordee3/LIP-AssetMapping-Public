@@ -10,7 +10,7 @@ import { CATEGORIES } from "./apiConfig";
 
 // leaflet map and marker objects
 let map;
-let markers = [];
+let markers = {};
 
 let iconColor;
 let myIcon;
@@ -58,7 +58,9 @@ document.addEventListener("DOMContentLoaded", function() {
     // get the endpoints for the selected category
     if (CATEGORIES[DEFAULT_CATEGORY]) {
         CATEGORIES[DEFAULT_CATEGORY].forEach(service => {
-            fetchAndProcessJSON(service.url, service.extractor, handleData, handleError);
+            fetchAndProcessJSON(service.url, service.extractor, data => {
+                handleData(data, service.key); // Pass endpoint key for marker storage
+            }, handleError);
         });
     } else {
         console.error("Category not found");
@@ -82,14 +84,15 @@ function fetchAndProcessJSON(url, extractorFunction, callback, errorCallback) {
         .catch(error => errorCallback(error));
 }
   
-function handleData(data) {
+function handleData(data, key) {
+    markers[key] = [];
     // create markers and place on map
     data.forEach(place => {
         if (place.latitude && place.longitude) {
             let marker = L.marker([place.latitude, place.longitude], {icon: myIcon}).addTo(map);
 
             // add marker to markers array
-            markers.push(marker);
+            markers[key].push(marker);
 
             // dynamically create tooltip content, excluding latitude and longitude, and adjusting case
             let tooltipContent = "<div class=\"g-tooltip\">";
@@ -121,15 +124,19 @@ function handleError(error) {
 }
 
 /* -------------------------------- FUNCTIONS ------------------------------- */
-function removeMarkers() {
-    // removing previous markers
-    markers.forEach(marker => marker.remove());
-
-    // reset markers array
-    markers = [];
+function removeAllMarkers() {
+    Object.keys(markers).forEach(key => {
+        markers[key].forEach(marker => marker.remove());
+        markers[key] = [];
+    });
 }
 
-
+function removeMarkersForKey(key) {
+    if (markers[key]) {
+        markers[key].forEach(marker => marker.remove());
+        markers[key] = [];
+    }
+}
 
 // Utility function to convert a string to title case
 function toTitleCase(str) {
@@ -141,7 +148,7 @@ function toTitleCase(str) {
 // when category box is clicked
 function selectCategory(e) {
     // remove previous markers
-    removeMarkers();
+    removeAllMarkers();
 
     // get the selected category
     const CATEGORY = e.target.getAttribute("data-category");
@@ -160,7 +167,9 @@ function selectCategory(e) {
     // get the endpoints for the selected category
     if (CATEGORIES[CATEGORY]) {
         CATEGORIES[CATEGORY].forEach(service => {
-            fetchAndProcessJSON(service.url, service.extractor, handleData, handleError);
+            fetchAndProcessJSON(service.url, service.extractor, data => {
+                handleData(data, service.key); // Pass endpoint key for marker storage
+            }, handleError);
         });
     } else {
         console.error("Category not found");
@@ -168,16 +177,16 @@ function selectCategory(e) {
 }
 
 function generateCheckboxes() {
-    const container = document.getElementById("filter-container"); // Ensure this container exists in your HTML
-    CATEGORIES.NEWCOMER_SERVICES_ENDPOINTS.forEach(endpoint => {
+    const container = document.getElementById("filter-container");
+    Object.values(CATEGORIES).flat().forEach(endpoint => {
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
-        checkbox.id = endpoint.url; // Using the URL as a unique ID
-        checkbox.checked = true; // Default to checked
-        checkbox.onchange = () => toggleMarkers(checkbox.checked, endpoint.url);
+        checkbox.id = endpoint.key;
+        checkbox.checked = true;
+        checkbox.onchange = () => toggleMarkers(checkbox.checked, endpoint.key);
 
         const label = document.createElement("label");
-        label.htmlFor = checkbox.id;
+        label.htmlFor = endpoint.key;
         label.textContent = endpoint.name;
 
         container.appendChild(checkbox);
@@ -185,13 +194,22 @@ function generateCheckboxes() {
     });
 }
 
-function toggleMarkers(checked, url) {
+function toggleMarkers(checked, key) {
     if (checked) {
-        markers[url].forEach(marker => marker.addTo(map));
+        // Ensure that markers[key] is correctly populated with markers
+        if (markers[key] && markers[key].length > 0) {
+            markers[key].forEach(marker => marker.addTo(map));
+        } else {
+            console.log("No markers stored for key:", key);
+            // Optionally, fetch data and create markers if not found
+        }
     } else {
-        markers[url].forEach(marker => marker.remove());
+        if (markers[key]) {
+            markers[key].forEach(marker => marker.remove());
+        }
     }
 }
+
 
 
 // --------------------------------------------------------- main method
