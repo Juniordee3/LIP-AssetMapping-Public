@@ -45,11 +45,13 @@ export const CATEGORIES = {
     NEWCOMER_SERVICES_ENDPOINTS: [
         {
             url: "http://localhost:3000/newcomerServices.json",
-            extractor: extractNewcomerServicesData
+            extractor: extractNewcomerServicesData,
+            name: "Custom Newcomer Dataset"
         },
         {
             url: "https://data.novascotia.ca/resource/7t4h-ktpk.json",
-            extractor: extractSettlementServiceProviderDirectoryData
+            extractor: extractSettlementServiceProviderDirectoryData,
+            name: "Settlement Service Provider Directory"
         }
     ]
 };

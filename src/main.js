@@ -63,6 +63,8 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
         console.error("Category not found");
     }
+    // generate checkboxes
+    generateCheckboxes();
 });
 
 
@@ -127,6 +129,8 @@ function removeMarkers() {
     markers = [];
 }
 
+
+
 // Utility function to convert a string to title case
 function toTitleCase(str) {
     return str.toLowerCase().split(" ").map(word => {
@@ -162,6 +166,33 @@ function selectCategory(e) {
         console.error("Category not found");
     }
 }
+
+function generateCheckboxes() {
+    const container = document.getElementById("filter-container"); // Ensure this container exists in your HTML
+    CATEGORIES.NEWCOMER_SERVICES_ENDPOINTS.forEach(endpoint => {
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.id = endpoint.url; // Using the URL as a unique ID
+        checkbox.checked = true; // Default to checked
+        checkbox.onchange = () => toggleMarkers(checkbox.checked, endpoint.url);
+
+        const label = document.createElement("label");
+        label.htmlFor = checkbox.id;
+        label.textContent = endpoint.name;
+
+        container.appendChild(checkbox);
+        container.appendChild(label);
+    });
+}
+
+function toggleMarkers(checked, url) {
+    if (checked) {
+        markers[url].forEach(marker => marker.addTo(map));
+    } else {
+        markers[url].forEach(marker => marker.remove());
+    }
+}
+
 
 // --------------------------------------------------------- main method
 function main() {
