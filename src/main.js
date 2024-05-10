@@ -179,6 +179,8 @@ function selectCategory(e) {
 function generateCheckboxes() {
     const container = document.getElementById("filter-container");
     Object.values(CATEGORIES).flat().forEach(endpoint => {
+        const wrapper = document.createElement("div");  // Create a div for each checkbox and label
+
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.id = endpoint.key;
@@ -189,10 +191,12 @@ function generateCheckboxes() {
         label.htmlFor = endpoint.key;
         label.textContent = endpoint.name;
 
-        container.appendChild(checkbox);
-        container.appendChild(label);
+        wrapper.appendChild(checkbox);
+        wrapper.appendChild(label);
+        container.appendChild(wrapper);  // Append the div, not the individual elements
     });
 }
+
 
 function toggleMarkers(checked, key) {
     if (checked) {
